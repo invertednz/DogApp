@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PawPal - Dog Health</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4F46E5',
+                        secondary: '#10B981',
+                        accent: '#F59E0B',
+                        light: '#F3F4F6',
+                    },
+                    borderRadius: {
+                        'xl': '1rem',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            width: 375px;
+            height: 812px;
+            margin: 0 auto;
+            overflow: hidden;
+            position: relative;
+            border: 12px solid #000;
+            border-radius: 40px;
+        }
+        .app-container {
+            height: 100%;
+            overflow-y: auto;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+        }
+        .nav-item.active {
+            color: #4F46E5;
+            border-top: 3px solid #4F46E5;
+        }
+        .chart-container {
+            position: relative;
+            height: 180px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="p-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <a href="index.html" class="mr-3">
+                    <i class="fas fa-arrow-left text-black text-lg"></i>
+                </a>
+                <h1 class="text-xl font-bold text-black">Health Tracker</h1>
+            </div>
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
+                <i class="fas fa-paw text-white"></i>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="px-4 pb-20">
+            <!-- Health Summary -->
+            <section class="mb-6">
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="flex items-center gap-3 mb-3">
+                        <div class="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center">
+                            <i class="fas fa-heartbeat text-red-500 text-xl"></i>
+                        </div>
+                        <div>
+                            <h2 class="text-lg font-semibold text-black">Max's Health</h2>
+                            <p class="text-sm text-black opacity-70">Overall: <span class="text-green-500 font-medium">Excellent</span></p>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-3 gap-2 mb-2">
+                        <div class="bg-light rounded-lg p-2 text-center">
+                            <p class="text-xs text-black opacity-70">Weight</p>
+                            <p class="text-sm font-medium text-black">65 lbs</p>
+                        </div>
+                        <div class="bg-light rounded-lg p-2 text-center">
+                            <p class="text-xs text-black opacity-70">Age</p>
+                            <p class="text-sm font-medium text-black">3y 2m</p>
+                        </div>
+                        <div class="bg-light rounded-lg p-2 text-center">
+                            <p class="text-xs text-black opacity-70">Last Check</p>
+                            <p class="text-sm font-medium text-black">May 10</p>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center">
+                        <div class="text-sm text-black">
+                            <p><i class="fas fa-calendar-alt mr-2 text-primary"></i> Next vet: <span class="font-medium">Jun 15</span></p>
+                        </div>
+                        <button class="text-primary text-sm font-medium">
+                            Add Record <i class="fas fa-plus ml-1 text-xs"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Weight Tracking -->
+            <section class="mb-6">
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-lg font-semibold text-black">Weight Tracking</h2>
+                    <a href="#" class="text-primary text-sm">History</a>
+                </div>
+                <div class="bg-white rounded-xl p-4 shadow-sm">
+                    <div class="chart-container">
+                        <canvas id="weightChart"></canvas>
+                    </div>
+                    <div class="flex justify-between items-center mt-3">
+                        <div>
+                            <p class="text-xs text-black opacity-70">Current</p>
+                            <p class="text-sm font-medium text-black">65 lbs (29.5 kg)</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-black opacity-70">Change</p>
+                            <p class="text-sm font-medium text-green-500">+0.5 lbs (last month)</p>
+                        </div>
+                        <button class="bg-primary text-white px-3 py-1 rounded-lg text-xs font-medium">
+                            Update
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Medications & Treatments -->
+            <section class="mb-6">
+                <h2 class="text-lg font-semibold text-black mb-3">Medications & Treatments</h2>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-black font-medium">Heartworm Prevention</h3>
+                                <p class="text-xs text-black opacity-70">Monthly tablet</p>
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-clock text-primary text-xs mr-1"></i>
+                                    <p class="text-xs text-black">Next dose: <span class="font-medium">Jun 1</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="w-8 h-8 rounded-full bg-light flex items-center justify-center mr-2">
+                                    <i class="fas fa-bell text-primary"></i>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-light flex items-center justify-center">
+                                    <i class="fas fa-check text-primary"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex justify-between items-start">
+                            <div>
+                                <h3 class="text-black font-medium">Flea & Tick Prevention</h3>
+                                <p class="text-xs text-black opacity-70">Topical treatment</p>
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-clock text-primary text-xs mr-1"></i>
+                                    <p class="text-xs text-black">Next dose: <span class="font-medium">Jun 15</span></p>
+                                </div>
+                            </div>
+                            <div class="flex items-center">
+                                <button class="w-8 h-8 rounded-full bg-light flex items-center justify-center mr-2">
+                                    <i class="fas fa-bell text-primary"></i>
+                                </button>
+                                <button class="w-8 h-8 rounded-full bg-light flex items-center justify-center">
+                                    <i class="fas fa-check text-primary"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-light rounded-xl p-3 flex items-center justify-center">
+                        <i class="fas fa-plus text-primary mr-2"></i>
+                        <span class="text-sm text-black">Add Medication</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Vet Appointments -->
+            <section class="mb-6">
+                <h2 class="text-lg font-semibold text-black mb-3">Upcoming Appointments</h2>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-stethoscope text-blue-500"></i>
+                            </div>
+                            <div class="flex-grow">
+                                <div class="flex justify-between items-start">
+                                    <h3 class="text-black font-medium">Annual Check-up</h3>
+                                    <span class="text-xs bg-primary text-white px-2 py-1 rounded-full">Upcoming</span>
+                                </div>
+                                <p class="text-xs text-black opacity-70">Dr. Sarah Johnson</p>
+                                <div class="flex items-center mt-1">
+                                    <i class="fas fa-calendar-alt text-primary text-xs mr-1"></i>
+                                    <p class="text-xs text-black">Jun 15, 2023 • 10:30 AM</p>
+                                </div>
+                                <div class="flex items-center mt-2">
+                                    <button class="text-xs text-primary font-medium mr-4">
+                                        <i class="fas fa-edit mr-1"></i> Edit
+                                    </button>
+                                    <button class="text-xs text-primary font-medium">
+                                        <i class="fas fa-map-marker-alt mr-1"></i> Directions
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-light rounded-xl p-3 flex items-center justify-center">
+                        <i class="fas fa-plus text-primary mr-2"></i>
+                        <span class="text-sm text-black">Schedule Appointment</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Activity Tracking -->
+            <section>
+                <div class="flex justify-between items-center mb-3">
+                    <h2 class="text-lg font-semibold text-black">Recent Activities</h2>
+                    <a href="#" class="text-primary text-sm">See all</a>
+                </div>
+                <div class="space-y-3">
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-walking text-green-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-black font-medium">Morning Walk</h3>
+                                <p class="text-xs text-black opacity-70">Today • 30 minutes • 1.2 miles</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="w-1 h-1 bg-black opacity-50 rounded-full mr-1"></span>
+                                    <p class="text-xs text-black">Energy level: High</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-white rounded-xl p-4 shadow-sm">
+                        <div class="flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-full bg-yellow-100 flex items-center justify-center flex-shrink-0">
+                                <i class="fas fa-utensils text-yellow-500"></i>
+                            </div>
+                            <div>
+                                <h3 class="text-black font-medium">Breakfast</h3>
+                                <p class="text-xs text-black opacity-70">Today • 7:30 AM</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="w-1 h-1 bg-black opacity-50 rounded-full mr-1"></span>
+                                    <p class="text-xs text-black">2 cups of premium dry food</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="w-full bg-light rounded-xl p-3 flex items-center justify-center">
+                        <i class="fas fa-plus text-primary mr-2"></i>
+                        <span class="text-sm text-black">Log Activity</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+
+        <!-- Navigation Bar -->
+        <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg w-[351px] mx-auto rounded-t-xl">
+            <div class="flex justify-around items-center p-3">
+                <a href="index.html" class="nav-item flex flex-col items-center pt-1">
+                    <i class="fas fa-home text-lg"></i>
+                    <span class="text-xs mt-1">Home</span>
+                </a>
+                <a href="profile.html" class="nav-item flex flex-col items
