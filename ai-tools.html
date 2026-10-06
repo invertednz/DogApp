@@ -1,257 +1,385 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PawPal - AI Tools</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      rel="stylesheet"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#4F46E5',
-                        secondary: '#10B981',
-                        accent: '#F59E0B',
-                        light: '#F3F4F6',
-                    },
-                    borderRadius: {
-                        'xl': '1rem',
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#4F46E5",
+              secondary: "#10B981",
+              accent: "#F59E0B",
+              light: "#F3F4F6",
+            },
+            borderRadius: {
+              xl: "1rem",
+            },
+          },
+        },
+      };
     </script>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            width: 375px;
-            height: 812px;
-            margin: 0 auto;
-            overflow: hidden;
-            position: relative;
-            border: 12px solid #000;
-            border-radius: 40px;
-        }
-        .app-container {
-            height: 100%;
-            overflow-y: auto;
-            background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
-        }
-        .nav-item.active {
-            color: #4F46E5;
-            border-top: 3px solid #4F46E5;
-        }
-        .chat-bubble {
-            max-width: 80%;
-            padding: 10px 14px;
-            border-radius: 18px;
-            margin-bottom: 8px;
-        }
-        .chat-bubble.user {
-            background-color: #4F46E5;
-            color: white;
-            border-bottom-right-radius: 4px;
-            margin-left: auto;
-        }
-        .chat-bubble.ai {
-            background-color: #F3F4F6;
-            color: black;
-            border-bottom-left-radius: 4px;
-        }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        width: 375px;
+        height: 812px;
+        margin: 0 auto;
+        overflow: hidden;
+        position: relative;
+        border: 12px solid #000;
+        border-radius: 40px;
+      }
+      .app-container {
+        height: 100%;
+        overflow-y: auto;
+        background: linear-gradient(135deg, #f5f7fa 0%, #e4e9f2 100%);
+      }
+      .nav-item.active {
+        color: #4f46e5;
+        border-top: 3px solid #4f46e5;
+      }
+      .chat-bubble {
+        max-width: 80%;
+        padding: 10px 14px;
+        border-radius: 18px;
+        margin-bottom: 8px;
+      }
+      .chat-bubble.user {
+        background-color: #4f46e5;
+        color: white;
+        border-bottom-right-radius: 4px;
+        margin-left: auto;
+      }
+      .chat-bubble.ai {
+        background-color: #f3f4f6;
+        color: black;
+        border-bottom-left-radius: 4px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="app-container">
-        <!-- Header -->
-        <header class="p-4 flex justify-between items-center">
-            <div class="flex items-center">
-                <a href="index.html" class="mr-3">
-                    <i class="fas fa-arrow-left text-black text-lg"></i>
-                </a>
-                <h1 class="text-xl font-bold text-black">AI Tools</h1>
+      <!-- Header -->
+      <header class="p-4 flex justify-between items-center">
+        <div class="flex items-center">
+          <a href="index.html" class="mr-3">
+            <i class="fas fa-arrow-left text-black text-lg"></i>
+          </a>
+          <h1 class="text-xl font-bold text-black">AI Tools</h1>
+        </div>
+        <div
+          class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center"
+        >
+          <i class="fas fa-paw text-white"></i>
+        </div>
+      </header>
+
+      <!-- Main Content -->
+      <main class="px-4 pb-20">
+        <!-- AI Tools Intro -->
+        <section class="mb-6">
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-center gap-3 mb-3">
+              <div
+                class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center"
+              >
+                <i class="fas fa-brain text-purple-500 text-xl"></i>
+              </div>
+              <div>
+                <h2 class="text-lg font-semibold text-black">AI Companion</h2>
+                <p class="text-sm text-black opacity-70">
+                  Understand Max better with AI
+                </p>
+              </div>
             </div>
-            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
-                <i class="fas fa-paw text-white"></i>
+            <p class="text-sm text-black mb-3">
+              Our AI tools help you understand your dog's behavior, track their
+              mood, and get personalized insights to improve their wellbeing.
+            </p>
+            <div class="flex space-x-2">
+              <span
+                class="px-3 py-1 bg-purple-100 rounded-full text-xs text-black"
+                >Behavior Analysis</span
+              >
+              <span
+                class="px-3 py-1 bg-blue-100 rounded-full text-xs text-black"
+                >Mood Tracking</span
+              >
+              <span
+                class="px-3 py-1 bg-green-100 rounded-full text-xs text-black"
+                >Breed Info</span
+              >
             </div>
-        </header>
+          </div>
+        </section>
 
-        <!-- Main Content -->
-        <main class="px-4 pb-20">
-            <!-- AI Tools Intro -->
-            <section class="mb-6">
-                <div class="bg-white rounded-xl p-4 shadow-sm">
-                    <div class="flex items-center gap-3 mb-3">
-                        <div class="w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
-                            <i class="fas fa-brain text-purple-500 text-xl"></i>
-                        </div>
-                        <div>
-                            <h2 class="text-lg font-semibold text-black">AI Companion</h2>
-                            <p class="text-sm text-black opacity-70">Understand Max better with AI</p>
-                        </div>
-                    </div>
-                    <p class="text-sm text-black mb-3">Our AI tools help you understand your dog's behavior, track their mood, and get personalized insights to improve their wellbeing.</p>
-                    <div class="flex space-x-2">
-                        <span class="px-3 py-1 bg-purple-100 rounded-full text-xs text-black">Behavior Analysis</span>
-                        <span class="px-3 py-1 bg-blue-100 rounded-full text-xs text-black">Mood Tracking</span>
-                        <span class="px-3 py-1 bg-green-100 rounded-full text-xs text-black">Breed Info</span>
-                    </div>
+        <!-- Behavior Interpreter -->
+        <section class="mb-6">
+          <h2 class="text-lg font-semibold text-black mb-3">
+            Behavior Interpreter
+          </h2>
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex items-start gap-3 mb-4">
+              <div
+                class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0"
+              >
+                <i class="fas fa-comment-dots text-purple-500"></i>
+              </div>
+              <div>
+                <h3 class="text-black font-medium">
+                  What is Max trying to tell you?
+                </h3>
+                <p class="text-xs text-black opacity-70 mb-3">
+                  Upload a photo or describe a behavior
+                </p>
+                <div class="flex space-x-2 mb-3">
+                  <button
+                    class="bg-light text-black px-3 py-2 rounded-lg text-xs font-medium flex items-center"
+                  >
+                    <i class="fas fa-camera mr-1"></i> Take Photo
+                  </button>
+                  <button
+                    class="bg-light text-black px-3 py-2 rounded-lg text-xs font-medium flex items-center"
+                  >
+                    <i class="fas fa-image mr-1"></i> Upload
+                  </button>
                 </div>
-            </section>
+                <div class="relative">
+                  <input
+                    type="text"
+                    placeholder="Describe what Max is doing..."
+                    class="w-full px-4 py-2 rounded-lg bg-light text-black text-sm"
+                  />
+                  <button
+                    class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary"
+                  >
+                    <i class="fas fa-paper-plane"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div class="border-t border-gray-100 pt-3">
+              <h4 class="text-sm font-medium text-black mb-2">
+                Recent Interpretations
+              </h4>
+              <div class="space-y-3">
+                <div class="flex items-start gap-2">
+                  <div
+                    class="w-8 h-8 rounded-full bg-light flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fas fa-paw text-primary text-xs"></i>
+                  </div>
+                  <div class="bg-light rounded-lg p-2 text-sm text-black">
+                    <p class="font-medium">Tail wagging + jumping</p>
+                    <p class="text-xs opacity-70">
+                      Max is excited to see you and showing affection. This is a
+                      sign of a strong bond!
+                    </p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-2">
+                  <div
+                    class="w-8 h-8 rounded-full bg-light flex items-center justify-center flex-shrink-0"
+                  >
+                    <i class="fas fa-paw text-primary text-xs"></i>
+                  </div>
+                  <div class="bg-light rounded-lg p-2 text-sm text-black">
+                    <p class="font-medium">Pawing at food bowl</p>
+                    <p class="text-xs opacity-70">
+                      Max is communicating hunger or desire for a treat.
+                      Consider if it's feeding time or if he's had enough treats
+                      today.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
-            <!-- Behavior Interpreter -->
-            <section class="mb-6">
-                <h2 class="text-lg font-semibold text-black mb-3">Behavior Interpreter</h2>
-                <div class="bg-white rounded-xl p-4 shadow-sm">
-                    <div class="flex items-start gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
-                            <i class="fas fa-comment-dots text-purple-500"></i>
-                        </div>
-                        <div>
-                            <h3 class="text-black font-medium">What is Max trying to tell you?</h3>
-                            <p class="text-xs text-black opacity-70 mb-3">Upload a photo or describe a behavior</p>
-                            <div class="flex space-x-2 mb-3">
-                                <button class="bg-light text-black px-3 py-2 rounded-lg text-xs font-medium flex items-center">
-                                    <i class="fas fa-camera mr-1"></i> Take Photo
-                                </button>
-                                <button class="bg-light text-black px-3 py-2 rounded-lg text-xs font-medium flex items-center">
-                                    <i class="fas fa-image mr-1"></i> Upload
-                                </button>
-                            </div>
-                            <div class="relative">
-                                <input type="text" placeholder="Describe what Max is doing..." class="w-full px-4 py-2 rounded-lg bg-light text-black text-sm">
-                                <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary">
-                                    <i class="fas fa-paper-plane"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="border-t border-gray-100 pt-3">
-                        <h4 class="text-sm font-medium text-black mb-2">Recent Interpretations</h4>
-                        <div class="space-y-3">
-                            <div class="flex items-start gap-2">
-                                <div class="w-8 h-8 rounded-full bg-light flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-paw text-primary text-xs"></i>
-                                </div>
-                                <div class="bg-light rounded-lg p-2 text-sm text-black">
-                                    <p class="font-medium">Tail wagging + jumping</p>
-                                    <p class="text-xs opacity-70">Max is excited to see you and showing affection. This is a sign of a strong bond!</p>
-                                </div>
-                            </div>
-                            <div class="flex items-start gap-2">
-                                <div class="w-8 h-8 rounded-full bg-light flex items-center justify-center flex-shrink-0">
-                                    <i class="fas fa-paw text-primary text-xs"></i>
-                                </div>
-                                <div class="bg-light rounded-lg p-2 text-sm text-black">
-                                    <p class="font-medium">Pawing at food bowl</p>
-                                    <p class="text-xs opacity-70">Max is communicating hunger or desire for a treat. Consider if it's feeding time or if he's had enough treats today.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <!-- Mood Tracking -->
+        <section class="mb-6">
+          <h2 class="text-lg font-semibold text-black mb-3">Mood Insights</h2>
+          <div class="bg-white rounded-xl p-4 shadow-sm">
+            <div class="flex justify-between items-center mb-3">
+              <h3 class="text-black font-medium">Max's Mood Today</h3>
+              <span
+                class="px-3 py-1 bg-green-100 rounded-full text-xs text-black"
+                >Happy</span
+              >
+            </div>
+            <div class="flex justify-between items-center mb-4">
+              <div class="flex space-x-1">
+                <div
+                  class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center"
+                >
+                  <i class="fas fa-smile text-green-500"></i>
                 </div>
-            </section>
+                <div
+                  class="w-8 h-8 rounded-full bg-light flex items-center justify-center"
+                >
+                  <i class="fas fa-meh text-gray-400"></i>
+                </div>
+                <div
+                  class="w-8 h-8 rounded-full bg-light flex items-center justify-center"
+                >
+                  <i class="fas fa-frown text-gray-400"></i>
+                </div>
+                <div
+                  class="w-8 h-8 rounded-full bg-light flex items-center justify-center"
+                >
+                  <i class="fas fa-tired text-gray-400"></i>
+                </div>
+              </div>
+              <button class="text-primary text-xs font-medium">
+                Update Mood
+              </button>
+            </div>
+            <div class="space-y-2">
+              <div class="flex items-center">
+                <div
+                  class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"
+                ></div>
+                <p class="text-xs text-black">
+                  Based on today's activities and rest patterns
+                </p>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"
+                ></div>
+                <p class="text-xs text-black">
+                  Max seems energetic after his morning walk
+                </p>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"
+                ></div>
+                <p class="text-xs text-black">
+                  Playfulness level is higher than average
+                </p>
+              </div>
+            </div>
+            <div class="mt-3">
+              <button
+                class="w-full bg-light rounded-lg p-2 flex items-center justify-center"
+              >
+                <i class="fas fa-chart-line text-primary mr-2"></i>
+                <span class="text-sm text-black">View Mood History</span>
+              </button>
+            </div>
+          </div>
+        </section>
 
-            <!-- Mood Tracking -->
-            <section class="mb-6">
-                <h2 class="text-lg font-semibold text-black mb-3">Mood Insights</h2>
-                <div class="bg-white rounded-xl p-4 shadow-sm">
-                    <div class="flex justify-between items-center mb-3">
-                        <h3 class="text-black font-medium">Max's Mood Today</h3>
-                        <span class="px-3 py-1 bg-green-100 rounded-full text-xs text-black">Happy</span>
-                    </div>
-                    <div class="flex justify-between items-center mb-4">
-                        <div class="flex space-x-1">
-                            <div class="w-8 h-8 rounded-full bg-green-100 flex items-center justify-center">
-                                <i class="fas fa-smile text-green-500"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-light flex items-center justify-center">
-                                <i class="fas fa-meh text-gray-400"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-light flex items-center justify-center">
-                                <i class="fas fa-frown text-gray-400"></i>
-                            </div>
-                            <div class="w-8 h-8 rounded-full bg-light flex items-center justify-center">
-                                <i class="fas fa-tired text-gray-400"></i>
-                            </div>
-                        </div>
-                        <button class="text-primary text-xs font-medium">
-                            Update Mood
-                        </button>
-                    </div>
-                    <div class="space-y-2">
-                        <div class="flex items-center">
-                            <div class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"></div>
-                            <p class="text-xs text-black">Based on today's activities and rest patterns</p>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"></div>
-                            <p class="text-xs text-black">Max seems energetic after his morning walk</p>
-                        </div>
-                        <div class="flex items-center">
-                            <div class="w-1 h-1 bg-black opacity-50 rounded-full mr-2"></div>
-                            <p class="text-xs text-black">Playfulness level is higher than average</p>
-                        </div>
-                    </div>
-                    <div class="mt-3">
-                        <button class="w-full bg-light rounded-lg p-2 flex items-center justify-center">
-                            <i class="fas fa-chart-line text-primary mr-2"></i>
-                            <span class="text-sm text-black">View Mood History</span>
-                        </button>
-                    </div>
-                </div>
-            </section>
+        <!-- Breed AI Chat -->
+        <section>
+          <div class="flex justify-between items-center mb-3">
+            <h2 class="text-lg font-semibold text-black">Breed Expert Chat</h2>
+            <button class="text-primary text-sm">Clear</button>
+          </div>
+          <div class="bg-white rounded-xl p-4 shadow-sm mb-3">
+            <div class="mb-4 max-h-48 overflow-y-auto">
+              <div class="chat-bubble ai">
+                <p class="text-sm">
+                  Hello! I'm your Golden Retriever expert. How can I help you
+                  understand Max better today?
+                </p>
+              </div>
+              <div class="chat-bubble user">
+                <p class="text-sm">
+                  How much exercise does a Golden Retriever need daily?
+                </p>
+              </div>
+              <div class="chat-bubble ai">
+                <p class="text-sm">
+                  Golden Retrievers are energetic dogs that need about 1-2 hours
+                  of exercise daily. This should include walks, play sessions,
+                  and mental stimulation activities. Without enough exercise,
+                  they may develop behavioral issues.
+                </p>
+              </div>
+              <div class="chat-bubble user">
+                <p class="text-sm">
+                  What about shedding? Max seems to shed a lot.
+                </p>
+              </div>
+              <div class="chat-bubble ai">
+                <p class="text-sm">
+                  Golden Retrievers are heavy shedders! They have a dense double
+                  coat that sheds year-round, with heavier shedding during
+                  spring and fall. Regular brushing (3-4 times a week) can help
+                  manage shedding. Consider using a slicker brush or undercoat
+                  rake.
+                </p>
+              </div>
+            </div>
+            <div class="relative">
+              <input
+                type="text"
+                placeholder="Ask about Golden Retrievers..."
+                class="w-full px-4 py-2 rounded-lg bg-light text-black text-sm"
+              />
+              <button
+                class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary"
+              >
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </div>
+          </div>
+          <div class="bg-light rounded-xl p-3">
+            <p class="text-xs text-black mb-2 font-medium">Popular Questions</p>
+            <div class="flex flex-wrap gap-2">
+              <button
+                class="bg-white rounded-full px-3 py-1 text-xs text-black"
+              >
+                Diet recommendations
+              </button>
+              <button
+                class="bg-white rounded-full px-3 py-1 text-xs text-black"
+              >
+                Common health issues
+              </button>
+              <button
+                class="bg-white rounded-full px-3 py-1 text-xs text-black"
+              >
+                Training tips
+              </button>
+              <button
+                class="bg-white rounded-full px-3 py-1 text-xs text-black"
+              >
+                Grooming needs
+              </button>
+            </div>
+          </div>
+        </section>
+      </main>
 
-            <!-- Breed AI Chat -->
-            <section>
-                <div class="flex justify-between items-center mb-3">
-                    <h2 class="text-lg font-semibold text-black">Breed Expert Chat</h2>
-                    <button class="text-primary text-sm">Clear</button>
-                </div>
-                <div class="bg-white rounded-xl p-4 shadow-sm mb-3">
-                    <div class="mb-4 max-h-48 overflow-y-auto">
-                        <div class="chat-bubble ai">
-                            <p class="text-sm">Hello! I'm your Golden Retriever expert. How can I help you understand Max better today?</p>
-                        </div>
-                        <div class="chat-bubble user">
-                            <p class="text-sm">How much exercise does a Golden Retriever need daily?</p>
-                        </div>
-                        <div class="chat-bubble ai">
-                            <p class="text-sm">Golden Retrievers are energetic dogs that need about 1-2 hours of exercise daily. This should include walks, play sessions, and mental stimulation activities. Without enough exercise, they may develop behavioral issues.</p>
-                        </div>
-                        <div class="chat-bubble user">
-                            <p class="text-sm">What about shedding? Max seems to shed a lot.</p>
-                        </div>
-                        <div class="chat-bubble ai">
-                            <p class="text-sm">Golden Retrievers are heavy shedders! They have a dense double coat that sheds year-round, with heavier shedding during spring and fall. Regular brushing (3-4 times a week) can help manage shedding. Consider using a slicker brush or undercoat rake.</p>
-                        </div>
-                    </div>
-                    <div class="relative">
-                        <input type="text" placeholder="Ask about Golden Retrievers..." class="w-full px-4 py-2 rounded-lg bg-light text-black text-sm">
-                        <button class="absolute right-2 top-1/2 transform -translate-y-1/2 text-primary">
-                            <i class="fas fa-paper-plane"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="bg-light rounded-xl p-3">
-                    <p class="text-xs text-black mb-2 font-medium">Popular Questions</p>
-                    <div class="flex flex-wrap gap-2">
-                        <button class="bg-white rounded-full px-3 py-1 text-xs text-black">Diet recommendations</button>
-                        <button class="bg-white rounded-full px-3 py-1 text-xs text-black">Common health issues</button>
-                        <button class="bg-white rounded-full px-3 py-1 text-xs text-black">Training tips</button>
-                        <button class="bg-white rounded-full px-3 py-1 text-xs text-black">Grooming needs</button>
-                    </div>
-                </div>
-            </section>
-        </main>
-
-        <!-- Navigation Bar -->
-        <nav class="fixed bottom-0 left-0 right-0 bg-white shadow-lg w-[351px] mx-auto rounded-t-xl">
-            <div class="flex justify-around items-center p-3">
-                <a href="index.html" class="nav-item flex flex-col items-center pt-1">
-                    <i class="fas fa-home text-lg"></i>
-                    <span class="text-xs mt-1">Home</span>
-                </a>
-                <a href="profile.html" class="nav-item flex flex-col items-center pt-1">
-                    <i class="fas fa-dog text-lg"></i>
+      <!-- Navigation Bar -->
+      <nav
+        class="fixed bottom-0 left-0 right-0 bg-white shadow-lg w-[351px] mx-auto rounded-t-xl"
+      >
+        <div class="flex justify-around items-center p-3">
+          <a href="index.html" class="nav-item flex flex-col items-center pt-1">
+            <i class="fas fa-home text-lg"></i>
+            <span class="text-xs mt-1">Home</span>
+          </a>
+          <a
+            href="profile.html"
+            class="nav-item flex flex-col items-center pt-1"
+          >
+            <i class="fas fa-dog text-lg"></i
+          ></a>
+        </div>
+      </nav>
+    </div>
+  </body>
+</html>
